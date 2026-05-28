@@ -54,26 +54,26 @@ namespace Academy
 			tabControl_SelectedIndexChanged(tabControl, null);
 			////////////////////////////////////
 			//cbGroupsDirection.SelectedValue = 0;
-			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
-			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
-			LoadComboBoxFromBase(cbStudentsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbGroupsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbStudentsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
-		void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
-		{
-			string column = table.Substring(0, table.Length - 1).ToLower();
-			string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
-			if (condition != "") cmd += $" WHERE {condition}";
-			DataTable dt = connector.Load(cmd);
-			DataRow rowDefault = dt.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			dt.Rows.InsertAt(rowDefault, 0);
-			comboBox.DataSource = dt;
-			comboBox.DisplayMember = $"{column}_name";
-			comboBox.ValueMember = $"{column}_id";
-		}
+		//void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
+		//{
+		//	string column = table.Substring(0, table.Length - 1).ToLower();
+		//	string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
+		//	if (condition != "") cmd += $" WHERE {condition}";
+		//	DataTable dt = connector.Load(cmd);
+		//	DataRow rowDefault = dt.NewRow();
+		//	rowDefault[0] = 0;
+		//	rowDefault[1] = "Все";
+		//	dt.Rows.InsertAt(rowDefault, 0);
+		//	comboBox.DataSource = dt;
+		//	comboBox.DisplayMember = $"{column}_name";
+		//	comboBox.ValueMember = $"{column}_id";
+		//}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -122,7 +122,7 @@ namespace Academy
 				queries[0] + 
 				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbStudentsDirection.SelectedValue}")
 				);
-			LoadComboBoxFromBase
+			DataBase.LoadComboBoxFromBase
 			(
 				cbStudentsGroup, 
 				"Groups", 

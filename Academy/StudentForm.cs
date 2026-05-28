@@ -16,9 +16,10 @@ namespace Academy
 		public StudentForm()
 		{
 			InitializeComponent();
-			cbGroup.DataSource = DataBase.Connector.Select($"SELECT group_id,group_name FROM Groups");
-			cbGroup.DisplayMember = "group_name";
-			cbGroup.ValueMember = "group_id";
+			//cbGroup.DataSource = DataBase.Connector.Select($"SELECT group_id,group_name FROM Groups");
+			//cbGroup.DisplayMember = "group_name";
+			//cbGroup.ValueMember = "group_id";
+			DataBase.LoadComboBoxFromBase(cbGroup, "Groups");
 		}
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{
