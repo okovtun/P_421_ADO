@@ -133,8 +133,8 @@ namespace Academy
 
 		private void btnAddStudent_Click(object sender, EventArgs e)
 		{
-			HumanForm humanForm = new HumanForm();
-			humanForm.ShowDialog();
+			StudentForm studentForm = new StudentForm();
+			studentForm.ShowDialog();
 		}
 	}
 }
