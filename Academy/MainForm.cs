@@ -137,5 +137,10 @@ namespace Academy
 			if (studentForm.ShowDialog() == DialogResult.OK)
 				tabControl_SelectedIndexChanged(tabControl, null);
 		}
+
+		private void btnAddTeacher_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
