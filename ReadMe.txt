@@ -1,6 +1,15 @@
 ﻿https://github.com/okovtun/P_421_ADO.git
 https://www.youtube.com/playlist?list=PLeqyOOqxeiINE_YP8zrQv_xqmaRDCOrcl
 
+Real:
+https://matchwear.ru/
+https://github.com/NiXbi-L/StoreKPLite
+https://selectel.ru/services/cloud/servers/hosting/
+http://ufo.hosting/en/
+https://aeza.net/
+
+ActiveX Data Objects
+
 TODO:
 1. Проверить добавление студентов в Базу;
 2. Если студент был добавлен, он должен сразу же отображаться на вкладке 'Students',
