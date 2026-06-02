@@ -37,5 +37,11 @@ namespace Academy
 		{
 			Compress();
 		}
+
+		private void pictureBoxPhoto_MouseHover(object sender, EventArgs e)
+		{
+			ToolTip tt = new ToolTip();
+			tt.SetToolTip(pictureBoxPhoto,"Для выбора фото сделайте двойной шелчек мышью");
+		}
 	}
 }
