@@ -45,8 +45,8 @@
 			this.tabPageDisciplines = new System.Windows.Forms.TabPage();
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
-			this.dgvTeachers = new System.Windows.Forms.DataGridView();
 			this.btnAddTeacher = new System.Windows.Forms.Button();
+			this.dgvTeachers = new System.Windows.Forms.DataGridView();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -146,8 +146,11 @@
 			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvStudents.Location = new System.Drawing.Point(9, 34);
 			this.dgvStudents.Name = "dgvStudents";
+			this.dgvStudents.ReadOnly = true;
+			this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvStudents.Size = new System.Drawing.Size(721, 316);
 			this.dgvStudents.TabIndex = 0;
+			this.dgvStudents.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudents_CellMouseDoubleClick);
 			// 
 			// tabPageGroups
 			// 
@@ -242,6 +245,16 @@
 			this.tabPageTeachers.Text = "Teachers";
 			this.tabPageTeachers.UseVisualStyleBackColor = true;
 			// 
+			// btnAddTeacher
+			// 
+			this.btnAddTeacher.Location = new System.Drawing.Point(657, 6);
+			this.btnAddTeacher.Name = "btnAddTeacher";
+			this.btnAddTeacher.Size = new System.Drawing.Size(75, 23);
+			this.btnAddTeacher.TabIndex = 1;
+			this.btnAddTeacher.Text = "Добавить";
+			this.btnAddTeacher.UseVisualStyleBackColor = true;
+			this.btnAddTeacher.Click += new System.EventHandler(this.btnAddTeacher_Click);
+			// 
 			// dgvTeachers
 			// 
 			this.dgvTeachers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -253,16 +266,6 @@
 			this.dgvTeachers.Name = "dgvTeachers";
 			this.dgvTeachers.Size = new System.Drawing.Size(729, 315);
 			this.dgvTeachers.TabIndex = 0;
-			// 
-			// btnAddTeacher
-			// 
-			this.btnAddTeacher.Location = new System.Drawing.Point(657, 6);
-			this.btnAddTeacher.Name = "btnAddTeacher";
-			this.btnAddTeacher.Size = new System.Drawing.Size(75, 23);
-			this.btnAddTeacher.TabIndex = 1;
-			this.btnAddTeacher.Text = "Добавить";
-			this.btnAddTeacher.UseVisualStyleBackColor = true;
-			this.btnAddTeacher.Click += new System.EventHandler(this.btnAddTeacher_Click);
 			// 
 			// MainForm
 			// 

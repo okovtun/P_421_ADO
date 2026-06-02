@@ -15,11 +15,18 @@ namespace Academy
 		Models.Student student;
 		public StudentForm()
 		{
+			//Default constructor - это конструктор, который может быть вызван без параметров.
 			InitializeComponent();
 			//cbGroup.DataSource = DataBase.Connector.Select($"SELECT group_id,group_name FROM Groups");
 			//cbGroup.DisplayMember = "group_name";
 			//cbGroup.ValueMember = "group_id";
 			DataBase.LoadComboBoxFromBase(cbGroup, "Groups");
+		}
+		public StudentForm(int id) : this()
+			//:this() - делегирует (вызывает) конструктор по умолчанию.
+		{
+			DataTable data = DataBase.Connector.Load("*", "Students", $"stud_id={id}");
+			//TODO: Extract student's data to Form;
 		}
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{
