@@ -27,6 +27,13 @@ namespace Academy
 		{
 			DataTable data = DataBase.Connector.Load("*", "Students", $"stud_id={id}");
 			//TODO: Extract student's data to Form;
+			human = student = new Models.Student(data.Rows[0].ItemArray);
+			Exctract();
+		}
+		protected override void Exctract()
+		{
+			base.Exctract();
+			cbGroup.SelectedValue = student.group;
 		}
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{

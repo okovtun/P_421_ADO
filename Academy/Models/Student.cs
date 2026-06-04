@@ -8,9 +8,9 @@ using System.Drawing;
 
 namespace Academy.Models
 {
-	class Student:Human
+	class Student : Human
 	{
-		int group;
+		internal int group;
 		public Student
 			(
 			int id,
@@ -20,6 +20,10 @@ namespace Academy.Models
 			) : base(id, last_name, first_name, middle_name, birth_date, email, phone, photo)
 		{
 			this.group = group;
+		}
+		public Student(object[] values):base(values)
+		{
+			this.group = (int)values[8];
 		}
 		public Student(Human human, int group):base(human)
 		{

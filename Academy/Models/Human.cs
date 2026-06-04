@@ -35,6 +35,22 @@ namespace Academy.Models
 			this.phone = phone;
 			this.photo = photo;
 		}
+		public Human(object[] values)
+		{
+			this.id = (int)values[0];
+			this.last_name		= values[1].ToString();
+			this.first_name		= values[2].ToString();
+			this.middle_name	= values[3].ToString();
+			this.birth_date		= Convert.ToDateTime(values[4]).ToString("yyyy-MM-dd");
+			this.email			= values[5].ToString();
+			this.phone			= values[6].ToString();
+			if (values[7] as byte[] != null)
+			{
+				MemoryStream ms = new MemoryStream(values[7] as byte[]);
+				this.photo = Image.FromStream(ms);
+				ms.Dispose(); 
+			}
+		}
 		public Human(Human other)
 		{
 			this.id = other.id;
