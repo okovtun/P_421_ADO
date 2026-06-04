@@ -33,6 +33,11 @@ WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
 		{
 			return (int)GetLastPrimaryKey(table) + 1;
 		}
+		public void Update(string table, string expression, string condition)
+		{
+			string cmd = $"UPDATE {table} SET {expression} WHERE {condition}";
+			NonQuery(cmd);
+		}
 		public void Insert(string table, string fields, string values)
 		{
 			string pk = GetPrimaryKeyColumnName(table);
@@ -47,9 +52,9 @@ WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
 				if (i != s_fields.Length - 1) condition += " AND ";
 			}
 			if (Scalar($"SELECT {GetPrimaryKeyColumnName(table)} FROM {table} WHERE {condition}") != null) return;
-			Insert($"INSERT {table}({fields}) VALUES({values})");
+			NonQuery($"INSERT {table}({fields}) VALUES({values})");
 		}
-		public void Insert(string cmd)
+		public void NonQuery(string cmd)
 		{
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();

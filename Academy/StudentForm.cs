@@ -39,13 +39,19 @@ namespace Academy
 		{
 			base.btnOK_Click(sender, e);
 			student = new Models.Student(human, (int)cbGroup.SelectedValue);
-student.id = Convert.ToInt32
-(
-DataBase.Connector.Scalar
-	(
-		$"INSERT Students({student.GetNames()}) VALUES({student.GetValues()});SELECT SCOPE_IDENTITY();"	//Возвращает ID последней созданной записи
-	)
-);
+			if (student.id == 0) student.id = Convert.ToInt32
+  (
+  DataBase.Connector.Scalar
+	  (
+		  $"INSERT Students({student.GetNames()}) VALUES({student.GetValues()});SELECT SCOPE_IDENTITY();"   //Возвращает ID последней созданной записи
+	  )
+  );
+			else DataBase.Connector.Update
+				(
+					"Students",
+					student.GetUpdateExpression(),
+					$"stud_id={student.id}"
+				);
 			if (pictureBoxPhoto.Image != null)
 				DataBase.Connector.UploadPhoto(student.SerializePhoto(), student.id, "photo", "Students");
 		}
