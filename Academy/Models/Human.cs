@@ -48,7 +48,7 @@ namespace Academy.Models
 			{
 				MemoryStream ms = new MemoryStream(values[7] as byte[]);
 				this.photo = Image.FromStream(ms);
-				ms.Dispose(); 
+				//ms.Dispose(); //https://stackoverflow.com/questions/22708150/a-generic-error-occurred-in-gdi-at-system-drawing-image-save
 			}
 		}
 		public Human(Human other)
@@ -84,11 +84,57 @@ $"phone			=	N'{phone}'";
 		}
 		public byte[] SerializePhoto()
 		{
-			using (MemoryStream ms = new MemoryStream())
-			{
-				photo.Save(ms, photo.RawFormat);
-				return ms.ToArray();
-			}
+			MemoryStream ms = new MemoryStream(photo.Width*photo.Height);
+			photo.Save(ms, photo.RawFormat);
+			byte[] raw_photo = ms.ToArray();
+			//ms.Dispose();
+			return raw_photo;
 		}
 	}
 }
+/*
+----------------
+System.Runtime.InteropServices.ExternalException
+  HResult=0x80004005
+  Message=A generic error occurred in GDI+.
+  Source=System.Drawing
+  StackTrace:
+   at System.Drawing.Image.Save(Stream stream, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(Stream stream, ImageFormat format)
+   at Academy.Models.Human.SerializePhoto() in C:\Users\User\source\repos\ADO_P_421\Academy\Models\Human.cs:line 88
+   at Academy.StudentForm.btnOK_Click(Object sender, EventArgs e) in C:\Users\User\source\repos\ADO_P_421\Academy\StudentForm.cs:line 56
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at Academy.MainForm.dgvStudents_CellMouseDoubleClick(Object sender, DataGridViewCellMouseEventArgs e) in C:\Users\User\source\repos\ADO_P_421\Academy\MainForm.cs:line 150
+   at System.Windows.Forms.DataGridView.OnCellMouseDoubleClick(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnMouseDoubleClick(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Academy.Program.Main() in C:\Users\User\source\repos\ADO_P_421\Academy\Program.cs:line 19
+
+----------------
+ */
