@@ -17,6 +17,7 @@ namespace Academy
 		{
 			//Default constructor - это конструктор, который может быть вызван без параметров.
 			InitializeComponent();
+			this.Text = "Добавление студента";
 			//cbGroup.DataSource = DataBase.Connector.Select($"SELECT group_id,group_name FROM Groups");
 			//cbGroup.DisplayMember = "group_name";
 			//cbGroup.ValueMember = "group_id";
@@ -26,6 +27,7 @@ namespace Academy
 			//:this() - делегирует (вызывает) конструктор по умолчанию.
 		{
 			DataTable data = DataBase.Connector.Load("*", "Students", $"stud_id={id}");
+			this.Text = "Редактирование студента";
 			//TODO: Extract student's data to Form;
 			human = student = new Models.Student(data.Rows[0].ItemArray);
 			Exctract();

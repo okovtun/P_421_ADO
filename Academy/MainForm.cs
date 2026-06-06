@@ -119,13 +119,13 @@ namespace Academy
 		{
 			tables[0].DataSource = connector.Load
 				(
-				queries[0] + 
+				queries[0] +
 				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbStudentsDirection.SelectedValue}")
 				);
 			DataBase.LoadComboBoxFromBase
 			(
-				cbStudentsGroup, 
-				"Groups", 
+				cbStudentsGroup,
+				"Groups",
 				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" direction={cbStudentsDirection.SelectedValue}")
 			);
 			toolStripStatusLabel.Text = $"Количество записей: {tables[0].RowCount - 1}";
@@ -135,7 +135,11 @@ namespace Academy
 		{
 			StudentForm studentForm = new StudentForm();
 			if (studentForm.ShowDialog() == DialogResult.OK)
+			{
 				tabControl_SelectedIndexChanged(tabControl, null);
+				dgvStudents.Rows[dgvStudents.RowCount - 2].Selected = true;
+				dgvStudents.FirstDisplayedScrollingRowIndex = dgvStudents.RowCount - 2;
+			}
 		}
 
 		private void btnAddTeacher_Click(object sender, EventArgs e)
