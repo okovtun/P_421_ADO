@@ -248,6 +248,7 @@
 			// 
 			// btnAddTeacher
 			// 
+			this.btnAddTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAddTeacher.Location = new System.Drawing.Point(657, 6);
 			this.btnAddTeacher.Name = "btnAddTeacher";
 			this.btnAddTeacher.Size = new System.Drawing.Size(75, 23);
