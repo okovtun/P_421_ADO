@@ -146,9 +146,12 @@ namespace Academy
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
 			int id = Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells[0].Value);
+			int firstDisplayingRow = dgvStudents.FirstDisplayedScrollingRowIndex;
 			StudentForm studentForm = new StudentForm(id);
 			if (studentForm.ShowDialog() == DialogResult.OK)
 				tabControl_SelectedIndexChanged(tabControl, null);
+			dgvStudents.Rows[e.RowIndex].Selected = true;   //https://stackoverflow.com/questions/30785458/how-to-change-the-selected-row-in-datagridview-from-code-behind
+			dgvStudents.FirstDisplayedScrollingRowIndex = firstDisplayingRow;   //https://stackoverflow.com/questions/4766409/how-do-i-programmatically-scroll-a-winforms-datagridview-control
 		}
 	}
 }
