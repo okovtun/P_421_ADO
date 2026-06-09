@@ -265,9 +265,13 @@
 			this.dgvTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvTeachers.Location = new System.Drawing.Point(3, 32);
+			this.dgvTeachers.MultiSelect = false;
 			this.dgvTeachers.Name = "dgvTeachers";
+			this.dgvTeachers.ReadOnly = true;
+			this.dgvTeachers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvTeachers.Size = new System.Drawing.Size(729, 315);
 			this.dgvTeachers.TabIndex = 0;
+			this.dgvTeachers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_CellMouseDoubleClick);
 			// 
 			// MainForm
 			// 

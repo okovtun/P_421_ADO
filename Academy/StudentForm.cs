@@ -30,11 +30,11 @@ namespace Academy
 			this.Text = "Редактирование студента";
 			//TODO: Extract student's data to Form;
 			human = student = new Models.Student(data.Rows[0].ItemArray);
-			Exctract();
+			Extract();
 		}
-		protected override void Exctract()
+		protected override void Extract()
 		{
-			base.Exctract();
+			base.Extract();
 			cbGroup.SelectedValue = student.group;
 		}
 		protected override void btnOK_Click(object sender, EventArgs e)

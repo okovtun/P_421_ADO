@@ -37,7 +37,7 @@ namespace Academy.Models
 		}
 		public Human(object[] values)
 		{
-			this.id = (int)values[0];
+			this.id = Convert.ToInt32(values[0]);
 			this.last_name		= values[1].ToString();
 			this.first_name		= values[2].ToString();
 			this.middle_name	= values[3].ToString();
