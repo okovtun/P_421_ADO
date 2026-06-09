@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academy", "Academy\Academy.
 		{429CF7FE-FDDD-4143-8F2C-0A033611F948} = {429CF7FE-FDDD-4143-8F2C-0A033611F948}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademyWPF", "AcademyWPF\AcademyWPF.csproj", "{3B00D849-4C90-4780-8DA7-81A77EC0BCE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{00BCD818-9AB0-44D0-9EB9-F9C239DDAD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00BCD818-9AB0-44D0-9EB9-F9C239DDAD76}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{00BCD818-9AB0-44D0-9EB9-F9C239DDAD76}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3B00D849-4C90-4780-8DA7-81A77EC0BCE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B00D849-4C90-4780-8DA7-81A77EC0BCE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B00D849-4C90-4780-8DA7-81A77EC0BCE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B00D849-4C90-4780-8DA7-81A77EC0BCE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
